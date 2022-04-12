@@ -1,9 +1,10 @@
 <template>
-  <h1> {{ $route.params.slug }}</h1>
+<NuxtLayout name="base">
+   <h1> {{ $route.params.slug }}</h1>
+</NuxtLayout>
+ 
 </template>
 
 <script setup>
-  definePageMeta({
-    layout: "base",
-  });
+
 </script>

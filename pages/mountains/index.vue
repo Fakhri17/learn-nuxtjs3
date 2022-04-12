@@ -1,9 +1,36 @@
 <template>
-  <h1> Mountains</h1>
+  <NuxtLayout name="base">
+    <h1 class="mb-5"> Mountain List</h1>
+    <div class="row">
+      <div v-for="(item, key) in mountain" :key="key" class="col-lg-4 col-sm-6 col-12 d-flex align-items-stretch">
+        <div class="w-400 mw-full">
+          <div class="card p-0">
+            <img :src="item.image" class="img-fluid rounded-top" alt="..." style="height: 40vh; object-fit: cover;">
+            <!-- rounded-top = rounded corners on the top -->
+            <div class="content">
+              <h2 class="content-title">
+                {{ item.title }}
+              </h2>
+              <p class="text-muted">
+                {{ item.description }}
+              </p>
+              <div class="text-right">
+                <NuxtLink :to="item.path">
+                  See detail
+                </NuxtLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </NuxtLayout>
 </template>
 
+
+
 <script setup>
-  definePageMeta({
-    layout: "base",
-  });
+ const { data: mountain } = await useFetch(
+    'https://api.nuxtjs.dev/mountains'
+  )
 </script>

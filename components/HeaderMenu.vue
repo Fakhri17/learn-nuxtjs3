@@ -49,20 +49,14 @@
 
 <script setup>
   let darkMode = false;
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    darkMode = true;
+  
+  if (localStorage.theme === 'dark') {
+    document.querySelector('body').classList.add('dark-mode');
+  } else {
+    document.querySelector('body').classList.remove('dark-mode');
   }
-
-  if (localStorage.getItem('theme') === 'dark') {
-     darkMode = true;
-  } 
-  else if (localStorage.getItem('theme') === 'light') {
-    darkMode = false;
-  }
-
-  if (darkMode) {
-    document.body.classList.toggle('dark-mode');
-  }
+  darkMode = document.querySelector('body').classList.contains('dark-mode')
+  localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 
   const switchDark = () => {  
     halfmoon.toggleDarkMode()
@@ -75,9 +69,8 @@
       document.getElementById("a").classList.add('bi-moon')
       document.getElementById("a").classList.remove('bi-sun-fill')
     }
-
     localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    
+    darkMode = document.querySelector('body').classList.contains('dark-mode')
   }
   const toggleSidebar = () => halfmoon.toggleSidebar()
 </script>
