@@ -5,7 +5,7 @@
       <div v-for="(item, key) in mountain" :key="key" class="col-lg-4 col-sm-6 col-12 d-flex align-items-stretch">
         <div class="w-400 mw-full">
           <div class="card p-0">
-            <img :src="item.image" class="img-fluid rounded-top" alt="..." style="height: 40vh; object-fit: cover;">
+            <img :src="item.image" class="img-fluid rounded-top" alt="..." style="object-fit: cover;">
             <!-- rounded-top = rounded corners on the top -->
             <div class="content">
               <h2 class="content-title">
