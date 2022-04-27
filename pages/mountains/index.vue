@@ -12,7 +12,7 @@
                 {{ item.title }}
               </h2>
               <p class="text-muted">
-                {{ item.description }}
+                {{ item.description.substring(0, 100) }}...
               </p>
               <div class="text-right">
                 <NuxtLink :to="item.path">
